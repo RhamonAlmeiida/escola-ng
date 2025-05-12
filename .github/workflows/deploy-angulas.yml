@@ -21,6 +21,15 @@ jobs:
         run: npm ci
       - name: Instalar Angular CLI
         run: npm install --global @angular/cli
+      - name: Build - Gerar o fonte de produção
+        run: ng build --configuration production --base-hrelf=/.../
+      - name: "Fazer o chekout do código"
+        uses: actions/checkout@v4 # essa é uma action que permite ter acesso ao código durante a execução do job
+        with:
+          ref: main  # ref é um input que diz qual será o nome da branch que utilizaremos
+      - name: "Listar arquivos e pastas"
+        run: |
+          ls -la
   construir:
     runs-on: ubuntu-24.04
     needs: 
