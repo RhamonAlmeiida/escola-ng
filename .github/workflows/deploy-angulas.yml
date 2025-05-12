@@ -22,7 +22,7 @@ jobs:
       - name: Instalar Angular CLI
         run: npm install --global @angular/cli
       - name: Build - Gerar o fonte de produção
-        run: ng build --configuration production --base-hrelf=/escola-ng/
+        run: ng build --configuration production --base-href=/escola-ng/
       - name: "Fazer o chekout do código"
         uses: actions/checkout@v4 # essa é uma action que permite ter acesso ao código durante a execução do job
         with:
