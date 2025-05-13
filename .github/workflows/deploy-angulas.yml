@@ -1,6 +1,7 @@
 name: "Workflow Exemplo"
 on:
-   workflow_dispatch:
+  push:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -29,5 +30,9 @@ jobs:
     runs-on: ubuntu-24.04
     needs: build
     steps:
-      - name: "Instalar as dependencias"
-        run: echo 'Instalando as dependencias'
+      - name: "Fazer o chekout do código"
+        uses: actions/checkout@v4 # essa é uma action que permite ter acesso ao código durante a execução do job
+        with:
+         ref: main  # ref é um input que diz qual será o nome da branch que utilizaremos
+      - name: "Listar arquivos"
+        run: ls -la
