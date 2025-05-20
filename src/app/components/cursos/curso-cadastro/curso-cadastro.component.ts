@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { CursoCadastro } from '../../../models/curso-cadastro';
-import { FloatLabel, FloatLabelModule } from 'primeng/floatlabel';
+import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ButtonModule } from 'primeng/button';
 
@@ -14,8 +14,8 @@ import { ButtonModule } from 'primeng/button';
 })
 export class CursoCadastroComponent {
   curso: CursoCadastro;
+
   constructor(){
     this.curso = new CursoCadastro();
   }
-
 }

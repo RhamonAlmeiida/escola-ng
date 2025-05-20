@@ -1,18 +1,19 @@
-name: "Deploy Angular PROD  "
+name: "Deploy Angular PROD"
 on:
   push:
     branches:
       - main
-  #workflow_dispatch:
+  # workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: "Fazer o chekout do código"
-        uses: actions/checkout@v4 # essa é uma action que permite ter acesso ao código durante a execução do job
+      - name: Fazer o checkout do código
+        # essa é uma aciton que permite ter acesso ao código durante a execução do job
+        uses: actions/checkout@v4 
         with:
-          ref: main  # ref é um input que diz qual será o nome da branch que utilizaremos
+          ref: main # ref é um input que diz qual será o nome da branch que utilizaremos
       - name: "Instalar Node.JS"
         uses: actions/setup-node@v4
         with:
@@ -22,7 +23,7 @@ jobs:
       - name: Instalar Angular CLI
         run: npm install --global @angular/cli
       - name: Build - Gerar o fonte de produção
-        run: ng build --configuration production --base-href=/escola-ng/
+        run: ng build --configuration production --base-href=/proway-superdev-escola-ng/
       - name: Salvar a pasta dist como artefato
         uses: actions/upload-artifact@v4
         with:
@@ -32,10 +33,11 @@ jobs:
     runs-on: ubuntu-24.04
     needs: build
     steps:
-      - name: "Fazer o chekout do código"
-        uses: actions/checkout@v4 # essa é uma action que permite ter acesso ao código durante a execução do job
+      - name: Fazer o checkout do código
+        # essa é uma aciton que permite ter acesso ao código durante a execução do job
+        uses: actions/checkout@v4 
         with:
-         ref: main  # ref é um input que diz qual será o nome da branch que utilizaremos
+          ref: main
       - name: Download do artefato
         uses: actions/download-artifact@v4
         with:
@@ -43,8 +45,8 @@ jobs:
           path: ./dist
       - name: "Configurar Git"
         run: |
-          git config user.name "Rhamon Silva Almeida"
-          git config user.email "rhamonalmeida.dev@hotmail.com"
+          git config --global user.name "Francisco Lucas Janesch Lange Sens"
+          git config --global user.email "franciscosensaulas@gmail.com"
           npm install --global angular-cli-ghpages
       - name: Deploy to GitHub Pages
         run: npx angular-cli-ghpages --dir=dist/escola-ng/browser --no-silent
