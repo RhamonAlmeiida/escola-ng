@@ -101,7 +101,7 @@ export class AlunosListaComponent implements OnInit{
 
   
 
-  confirm1(event: Event, alunoId: number) {
+  confirmaParaApagar(event: Event, alunoId: number) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
       message: 'Deseja realmente apagar?',
