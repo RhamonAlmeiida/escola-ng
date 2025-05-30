@@ -1,0 +1,20 @@
+<div class="flex flex-column gap-4">
+
+
+<p-floatlabel class="mb-4">
+    <label for="campo-nome">Nome :</label>
+    <input type="text" id="campo-nome"  [(ngModel)]="formacao.nome">
+</p-floatlabel>
+
+<p-floatlabel>
+    <label for="campo-descricao">Descrição :</label>
+    <textarea id="descricao" name="descricao" rows="4" cols="50" [(ngModel)]="formacao.descricao" ></textarea>
+</p-floatlabel>
+
+<p-floatlabel>
+    <label for="campo-duracao">Duração :</label>
+    <input type="datetime" id="campo-duracao" [(ngModel)]="formacao.duracao">
+</p-floatlabel>
+
+<button lavel="Cadastrar" (click)="cadastrar()" ></button>
+</div>
