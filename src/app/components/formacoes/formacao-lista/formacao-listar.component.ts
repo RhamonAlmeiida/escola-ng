@@ -5,8 +5,9 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TableModule } from 'primeng/table';
-import { ToastModule } from 'primeng/toast';
+import { ToastClasses, ToastModule } from 'primeng/toast';
 import { FormacaoService } from '../../../services/formacao.service';
+import { Formacao } from '../../../models/formacao';
 
 @Component({
   selector: 'app-formacao-listar',
@@ -15,9 +16,11 @@ import { FormacaoService } from '../../../services/formacao.service';
     CommonModule,     
     ButtonModule,      
     ToastModule,       
-    ConfirmDialogModule 
+    ConfirmDialogModule,
+    ToastModule,
+    
   ],
-  providers: [MessageService, ConfirmationService],
+  providers: [MessageService, ConfirmationService, ToastModule,],
   templateUrl: './formacao-listar.component.html',
   styleUrl: './formacao-listar.component.css'
 })
