@@ -37,7 +37,7 @@ export class NavbarComponent {
       {
         label: 'Formações',
         icon: 'pi pi user',
-        command: () => this.navegar("/Formacoes")
+        command: () => this.navegar("/formacoes")
       }
     ]
   }
