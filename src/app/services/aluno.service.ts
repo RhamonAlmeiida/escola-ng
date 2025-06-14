@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlunoCadastro } from '../models/aluno-cadastro';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Aluno } from '../models/aluno';
 
 @Injectable({
@@ -15,24 +15,24 @@ export class AlunoService {
   }
 
   cadastrar(alunoCadastro: AlunoCadastro): Observable<any>{
-    return this.http.post<any>(this.urlApi, alunoCadastro);
+    return this.http.post<any>(this.urlApi, alunoCadastro); // criar
   }
 
-  obterTodos(): Observable<Array<Aluno>>{
-    return this.http.get<Array<Aluno>>(this.urlApi);
+  obterTodos(filtro: string = ""): Observable<Array<Aluno>>{
+    let params = new HttpParams()
+      .set("filtro", filtro);
+    return this.http.get<Array<Aluno>>(this.urlApi, {params}); // consultar todos
   }
 
   apagar(id: number): Observable<any>{
-    return this,this.http.delete<any>(`${this.urlApi}/${id}`);
-    // return this.https.delete<any>(this.urlApi + "/" + id);
+    return this.http.delete<any>(`${this.urlApi}/${id}`);
+    // return this.http.delete<any>(this.urlApi + "/" + id);
   }
 
   alterar(id: number, aluno: AlunoCadastro): Observable<any>{
-    return this,this.http.put<any>(`${this.urlApi}/${id}`, aluno);
+    return this.http.put<any>(`${this.urlApi}/${id}`, aluno);
   }
 }
-
-
 
 
 /* HTTP METHODS:
